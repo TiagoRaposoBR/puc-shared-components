@@ -1,8 +1,10 @@
 import Vue from 'vue'
-import App from './App.vue'
+import wrap from '@vue/web-component-wrapper';
+import Cabecalho from './components/Cabecalho';
+import FeedPost from './components/FeedPost';
 
-Vue.config.productionTip = false
+const CustomElementCabecalho = wrap(Vue, Cabecalho);
+const CustomElementPost = wrap(Vue, FeedPost);
 
-new Vue({
-  render: h => h(App),
-}).$mount('#app')
+window.customElements.define('cabecalho', CustomElementCabecalho);
+window.customElements.define('feed-post', CustomElementPost);
